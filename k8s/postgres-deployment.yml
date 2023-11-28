@@ -25,3 +25,9 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data #Path inside the container from where the data will be copied to the Persistent Volume. In this case this is the default path where Postgre stores data.
               subPath: postgres
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
